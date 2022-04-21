@@ -14,6 +14,8 @@
 		4B02556A280FD2B900207328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B025569280FD2B900207328 /* Assets.xcassets */; };
 		4B02556D280FD2B900207328 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B02556B280FD2B900207328 /* LaunchScreen.storyboard */; };
 		4B025570280FD2B900207328 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B02556F280FD2B900207328 /* main.m */; };
+		4B025578280FDEE200207328 /* LocalNetworkAuthorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B025577280FDEE200207328 /* LocalNetworkAuthorization.m */; };
+		4B1916D6280FFB5300980107 /* WirelessDataPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1916D5280FFB5300980107 /* WirelessDataPermission.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,10 @@
 		4B02556C280FD2B900207328 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B02556E280FD2B900207328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B02556F280FD2B900207328 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4B025576280FDEC200207328 /* LocalNetworkAuthorization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalNetworkAuthorization.h; sourceTree = "<group>"; };
+		4B025577280FDEE200207328 /* LocalNetworkAuthorization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalNetworkAuthorization.m; sourceTree = "<group>"; };
+		4B1916D4280FFB5200980107 /* permissions-oc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "permissions-oc-Bridging-Header.h"; sourceTree = "<group>"; };
+		4B1916D5280FFB5300980107 /* WirelessDataPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WirelessDataPermission.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +73,15 @@
 				4B025561280FD2B800207328 /* SceneDelegate.m */,
 				4B025563280FD2B800207328 /* ViewController.h */,
 				4B025564280FD2B800207328 /* ViewController.m */,
+				4B025576280FDEC200207328 /* LocalNetworkAuthorization.h */,
+				4B025577280FDEE200207328 /* LocalNetworkAuthorization.m */,
 				4B025566280FD2B800207328 /* Main.storyboard */,
 				4B025569280FD2B900207328 /* Assets.xcassets */,
 				4B02556B280FD2B900207328 /* LaunchScreen.storyboard */,
 				4B02556E280FD2B900207328 /* Info.plist */,
 				4B02556F280FD2B900207328 /* main.m */,
+				4B1916D5280FFB5300980107 /* WirelessDataPermission.swift */,
+				4B1916D4280FFB5200980107 /* permissions-oc-Bridging-Header.h */,
 			);
 			path = "permissions-oc";
 			sourceTree = "<group>";
@@ -107,6 +117,7 @@
 				TargetAttributes = {
 					4B025559280FD2B800207328 = {
 						CreatedOnToolsVersion = 13.3;
+						LastSwiftMigration = 1330;
 					};
 				};
 			};
@@ -146,10 +157,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B1916D6280FFB5300980107 /* WirelessDataPermission.swift in Sources */,
 				4B025565280FD2B800207328 /* ViewController.m in Sources */,
 				4B02555F280FD2B800207328 /* AppDelegate.m in Sources */,
 				4B025570280FD2B900207328 /* main.m in Sources */,
 				4B025562280FD2B800207328 /* SceneDelegate.m in Sources */,
+				4B025578280FDEE200207328 /* LocalNetworkAuthorization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,11 +303,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P9TVSH3F53;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "permissions-oc/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "The app needs to access the camera to turn on AR.";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "We need to connect to nearby devices.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We needs to access your microphone.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We will add recorded video in to your Photo Library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -308,6 +326,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yuchen.permissions-oc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "permissions-oc/permissions-oc-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -317,11 +338,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P9TVSH3F53;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "permissions-oc/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "The app needs to access the camera to turn on AR.";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "We need to connect to nearby devices.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We needs to access your microphone.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We will add recorded video in to your Photo Library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -335,6 +361,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yuchen.permissions-oc";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "permissions-oc/permissions-oc-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
